@@ -1,331 +1,143 @@
 import {Component} from 'react'
-import Loader from 'react-loader-spinner'
-
 import Cookies from 'js-cookie'
-
-import {AiFillHome} from 'react-icons/ai'
-import {HiFire} from 'react-icons/hi'
-import {GiLoveMystery} from 'react-icons/gi'
-import {RiMenuAddFill} from 'react-icons/ri'
-
-import GameVideoItem from '../GameVideoItem'
+import {SiYoutubegaming} from 'react-icons/si'
+import Loader from 'react-loader-spinner'
 import Header from '../Header'
-
-import VideoContext from '../../context/VideoContext'
-
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
+import SideBar from '../SideBar'
+import FailureView from '../FailureView'
+import GameVideoItem from '../GameVideoItem'
+import ThemeContext from '../../context/ThemeContext'
 
 import {
-  GamingRouteContainer,
-  GamingContainer,
-  SideBarContainer,
-  NavLinksContainer,
-  LinkGenerate,
-  LinkContainer,
-  LinkContainerGame,
-  Nav,
-  NavGaming,
-  ContactUsContainer,
-  ContactUs,
-  LogosContainer,
-  Logo,
-  ContactUsTagLine,
-  GamingBarContainer,
-  GamingLogoAndNameContainer,
-  GamingLogoContainer,
-  GamingName,
-  GamingVideosContainer,
-  SideBarContainerDark,
-  LinkContainerGameDark,
-  NavGameDark,
-  NavDark,
-  ContactUsDark,
-  ContactUsTagLineDark,
-  GamingBarContainerDark,
-  GamingLogoAndNameContainerDark,
-  GamingNameDark,
+  BodyContainer,
+  ResponsiveContainer,
   LoaderContainer,
-  FailureContainer,
-  FailureImage,
-  FailureName,
-  FailureDescription,
-  RetryBtn,
+  VideosListContainer,
+  IconContainer,
+  Heading,
+  LinkItem,
 } from './styledComponents'
 
-const apiConstants = {
+const apiStatusConstants = {
   initial: 'INITIAL',
+  inProgress: 'INPROGRESS',
   success: 'SUCCESS',
-  progress: 'PROGRESS',
   failure: 'FAILURE',
 }
 
 class Gaming extends Component {
   state = {
-    GamingVideos: [],
-    apiStatus: apiConstants.initial,
+    videosList: [],
+    apiStatus: apiStatusConstants.initial,
   }
 
   componentDidMount() {
-    this.getGamingVideos()
+    this.getVideos()
+    console.log(this.props)
   }
 
-  getGamingVideos = async () => {
-    this.setState({
-      apiStatus: apiConstants.progress,
-    })
+  getVideos = async () => {
+    this.setState({apiStatus: apiStatusConstants.inProgress})
     const jwtToken = Cookies.get('jwt_token')
     const url = `https://apis.ccbp.in/videos/gaming`
     const options = {
+      method: 'GET',
       headers: {
         Authorization: `Bearer ${jwtToken}`,
       },
-      method: 'GET',
     }
     const response = await fetch(url, options)
+
     if (response.ok === true) {
       const data = await response.json()
-      console.log(data)
       const updatedData = data.videos.map(each => ({
-        thumbnailUrl: each.thumbnail_url,
+        channel: {
+          name: '',
+          profileImageUrl: '',
+        },
         id: each.id,
-        viewCount: each.view_count,
+        publishedAt: '',
+        thumbnailUrl: each.thumbnail_url,
         title: each.title,
-        isSaved: false,
+        viewCount: each.view_count,
       }))
       this.setState({
-        GamingVideos: updatedData,
-        apiStatus: apiConstants.success,
+        videosList: updatedData,
+        apiStatus: apiStatusConstants.success,
       })
     } else {
-      this.setState({
-        apiStatus: apiConstants.failure,
-      })
+      this.setState({apiStatus: apiStatusConstants.failure})
     }
   }
 
-  sideBarDark = () => (
-    <SideBarContainerDark>
-      <NavLinksContainer>
-        <LinkGenerate to="/">
-          <LinkContainer>
-            <AiFillHome color="#64748b" size="16" />
-            <NavDark>Home</NavDark>
-          </LinkContainer>
-        </LinkGenerate>
-        <LinkGenerate to="/trending">
-          <LinkContainer>
-            <HiFire color="#64748b" size="16" />
-            <NavDark>Trending</NavDark>
-          </LinkContainer>
-        </LinkGenerate>
-        <LinkGenerate to="/gaming">
-          <LinkContainerGameDark>
-            <GiLoveMystery color="red" size="16" />
-            <NavGameDark>Gaming</NavGameDark>
-          </LinkContainerGameDark>
-        </LinkGenerate>
-        <LinkGenerate to="/saved-videos">
-          <LinkContainer>
-            <RiMenuAddFill color="#64748b" size="16" />
-            <NavDark>Saved videos</NavDark>
-          </LinkContainer>
-        </LinkGenerate>
-      </NavLinksContainer>
-      <ContactUsContainer>
-        <ContactUsDark>CONTACT US</ContactUsDark>
-        <LogosContainer>
-          <Logo
-            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
-            alt="facebook logo"
-          />
-          <Logo
-            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
-            alt="twitter logo"
-          />
-          <Logo
-            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
-            alt="linked in logo"
-          />
-        </LogosContainer>
-        <ContactUsTagLineDark>
-          Enjoy! Now to see your channels and recommendations!
-        </ContactUsTagLineDark>
-      </ContactUsContainer>
-    </SideBarContainerDark>
-  )
-
-  sideBarLight = () => (
-    <SideBarContainer>
-      <NavLinksContainer>
-        <LinkGenerate to="/">
-          <LinkContainer>
-            <AiFillHome color="#64748b" size="16" />
-            <Nav>Home</Nav>
-          </LinkContainer>
-        </LinkGenerate>
-        <LinkGenerate to="/trending">
-          <LinkContainer>
-            <HiFire color="#64748b" size="16" />
-            <Nav>Trending</Nav>
-          </LinkContainer>
-        </LinkGenerate>
-        <LinkGenerate to="/gaming">
-          <LinkContainerGame>
-            <GiLoveMystery color="red" size="16" />
-            <NavGaming>Gaming</NavGaming>
-          </LinkContainerGame>
-        </LinkGenerate>
-        <LinkGenerate to="/saved-videos">
-          <LinkContainer>
-            <RiMenuAddFill color="#64748b" size="16" />
-            <Nav>Saved videos</Nav>
-          </LinkContainer>
-        </LinkGenerate>
-      </NavLinksContainer>
-      <ContactUsContainer>
-        <ContactUs>CONTACT US</ContactUs>
-        <LogosContainer>
-          <Logo
-            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
-            alt="facebook logo"
-          />
-          <Logo
-            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
-            alt="twitter logo"
-          />
-          <Logo
-            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
-            alt="linked in logo"
-          />
-        </LogosContainer>
-        <ContactUsTagLine>
-          Enjoy! Now to see your channels and recommendations!
-        </ContactUsTagLine>
-      </ContactUsContainer>
-    </SideBarContainer>
-  )
-
-  renderGamingBarDark = () => {
-    const {GamingVideos} = this.state
-    return (
-      <GamingBarContainerDark>
-        <GamingLogoAndNameContainerDark>
-          <GamingLogoContainer>
-            <GiLoveMystery color="red" size="29" />
-          </GamingLogoContainer>
-          <GamingNameDark>Gaming</GamingNameDark>
-        </GamingLogoAndNameContainerDark>
-        <GamingVideosContainer>
-          {GamingVideos.map(each => (
-            <GameVideoItem key={each.id} game={each} />
-          ))}
-        </GamingVideosContainer>
-      </GamingBarContainerDark>
-    )
+  onClickSearchButton = () => {
+    this.getVideos()
   }
 
-  renderGamingBarLight = () => {
-    const {GamingVideos} = this.state
-    return (
-      <GamingBarContainer>
-        <GamingLogoAndNameContainer>
-          <GamingLogoContainer>
-            <GiLoveMystery color="red" size="29" />
-          </GamingLogoContainer>
-          <GamingName>Gaming</GamingName>
-        </GamingLogoAndNameContainer>
-        <GamingVideosContainer>
-          {GamingVideos.map(each => (
-            <GameVideoItem key={each.id} game={each} />
-          ))}
-        </GamingVideosContainer>
-      </GamingBarContainer>
-    )
+  onClickRetyr = () => {
+    this.getVideos()
   }
 
   renderLoader = () => (
-    <VideoContext.Consumer>
-      {value => {
-        const {isDark} = value
-        return (
-          <LoaderContainer dark={isDark} data-testid="loader">
-            <Loader type="ThreeDots" color="blue" height="70" width="70" />
-          </LoaderContainer>
-        )
-      }}
-    </VideoContext.Consumer>
+    <LoaderContainer data-testid="loader">
+      <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+    </LoaderContainer>
   )
 
-  clickRetryBtn = () => {
-    this.getGamingVideos()
+  renderFailuerView = () => <FailureView onClickRetyr={this.onClickRetyr} />
+
+  renderVideos = () => {
+    const {videosList} = this.state
+    return (
+      <VideosListContainer>
+        {videosList.map(each => (
+          <GameVideoItem key={each.id} itemDetails={each} />
+        ))}
+      </VideosListContainer>
+    )
   }
 
-  renderFailureApi = () => (
-    <VideoContext.Consumer>
-      {value => {
-        const {isDark} = value
-        const image = isDark
-          ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
-          : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
-        return (
-          <FailureContainer dark={isDark}>
-            <FailureImage src={image} alt="failure view" />
-            <FailureName dark={isDark}>Oops! Something Went Wrong</FailureName>
-            <FailureDescription dark={isDark}>
-              We are having some trouble to complete your request. Please Try
-              again.
-            </FailureDescription>
-            <RetryBtn type="button" onClick={this.clickRetryBtn}>
-              Retry
-            </RetryBtn>
-          </FailureContainer>
-        )
-      }}
-    </VideoContext.Consumer>
-  )
-
-  gamingContainer = () => (
-    <VideoContext.Consumer>
-      {value => {
-        const {isDark} = value
-        return isDark ? this.renderGamingBarDark() : this.renderGamingBarLight()
-      }}
-    </VideoContext.Consumer>
-  )
-
-  renderGamingOnStatus = () => {
+  renderViews = () => {
     const {apiStatus} = this.state
     switch (apiStatus) {
-      case apiConstants.success:
-        return this.gamingContainer()
-      case apiConstants.progress:
+      case apiStatusConstants.failure:
+        return this.renderFailuerView()
+
+      case apiStatusConstants.success:
+        return this.renderVideos()
+
+      case apiStatusConstants.inProgress:
         return this.renderLoader()
-      case apiConstants.failure:
-        return this.renderFailureApi()
       default:
         return null
     }
   }
 
-  renderGaming = () => (
-    <VideoContext.Consumer>
-      {value => {
-        const {isDark} = value
-        return (
-          <GamingRouteContainer dark={isDark} data-testid="gaming">
-            <Header />
-            <GamingContainer>
-              {isDark ? this.sideBarDark() : this.sideBarLight()}
-              {this.renderGamingOnStatus()}
-            </GamingContainer>
-          </GamingRouteContainer>
-        )
-      }}
-    </VideoContext.Consumer>
-  )
-
   render() {
-    return this.renderGaming()
+    return (
+      <ThemeContext.Consumer>
+        {value => {
+          const {isDark} = value
+          return (
+            <>
+              <Header />
+              <BodyContainer>
+                <SideBar />
+                <ResponsiveContainer data-testid="gaming" isDark={isDark}>
+                  <LinkItem isDark={isDark}>
+                    <IconContainer darkMode={isDark}>
+                      <SiYoutubegaming className="header-icon" />
+                    </IconContainer>
+                    <Heading isDark={isDark}>Gaming Videos</Heading>
+                  </LinkItem>
+                  {this.renderViews()}
+                </ResponsiveContainer>
+              </BodyContainer>
+            </>
+          )
+        }}
+      </ThemeContext.Consumer>
+    )
   }
 }
 export default Gaming

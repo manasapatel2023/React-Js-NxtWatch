@@ -1,309 +1,105 @@
-import styled from 'styled-components/macro'
-import {Link} from 'react-router-dom'
+import styled from 'styled-components'
 
-export const LinkForLogo = styled(Link)`
-  text-decoration: none;
-`
-
-export const HeaderContainer = styled.div`
-  background-color: #ffffff;
-  min-height: 10vh;
+export const HeaderContainer = styled.nav`
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
-  padding-left: 10px;
-  @media (min-width: 768px) {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-`
-
-export const ImageContainer = styled.div`
-  display: flex;
-  flex-direction: row;
   align-items: center;
-`
-export const Image = styled.img`
-  width: 100px;
-  height: 32px;
-`
-
-export const NavItemsContainer = styled.ul`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`
-export const ThemeButton = styled.button`
-  height: 40px;
-  width: 50px;
-  outline: none;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-`
-export const ThemeImage = styled.img`
-  width: 33px;
-  height: 33px;
-`
-export const ProfileButton = styled.button`
-  height: 40px;
-  width: 50px;
-  outline: none;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  @media (max-width: 768px) {
-    display: none;
-  }
-`
-export const LogoutButtonLg = styled.button`
-  border: 1px solid #3b82f6;
-  height: 35px;
-  width: 80px;
-  background: transparent;
-  color: #3b82f6;
-  cursor: pointer;
-  outline: none;
-  border-radius: 4px;
-  font-family: 'Roboto';
-  font-size: 16px;
-  font-weight: 500;
-  margin-left: 8px;
-  @media (max-width: 768px) {
-    display: none;
-  }
-`
-export const LogoutButtonsm = styled.button`
-  height: 40px;
-  width: 50px;
-  outline: none;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  @media (min-width: 768px) {
-    display: none;
-  }
-`
-export const MenuButtonSm = styled.button`
-  height: 40px;
-  width: 50px;
-  outline: none;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  @media (min-width: 768px) {
-    display: none;
-  }
-`
-
-/** HeaderContainerDark */
-
-export const HeaderContainerDark = styled.div`
-  min-height: 10vh;
-  background-color: #181818;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 10px;
-  @media (min-width: 768px) {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-`
-export const LogoutButtonLgDark = styled.button`
-  border: 1px solid #f9f9f9;
-  height: 35px;
-  width: 80px;
-  background: transparent;
-  color: #f9f9f9;
-  cursor: pointer;
-  outline: none;
-  border-radius: 4px;
-  font-family: 'Roboto';
-  font-size: 16px;
-  font-weight: 500;
-  margin-left: 8px;
-  @media (max-width: 768px) {
-    display: none;
-  }
-`
-/** ModalContainer */
-
-export const ModalContainerDark = styled.div`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 100%;
-  height: 100%;
-  background: #181818;
-  border-radius: 15px;
-  @media (max-width: 768px) {
-    min-width: 100%;
-  }
-`
-export const ModalContainer = styled.div`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 100%;
-  height: 100%;
-  background: #ffffff;
-  border-radius: 15px;
-  @media (max-width: 768px) {
-    min-width: 100%;
-  }
-`
-export const ModalCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 100%;
-  height: 100%;
-  max-width: 258px;
-  @media (min-width: 768px) {
-    padding: 30px;
-  }
-`
-export const LogoutTagQDark = styled.p`
-  color: #ffffff;
-  font-family: 'Roboto';
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 30px;
-  min-width: 100%;
-  text-align: center;
-`
-
-export const LogoutTagQ = styled.p`
-  color: #00306e;
-  font-family: 'Roboto';
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 30px;
-  min-width: 100%;
-  text-align: center;
-`
-export const Buttons = styled.div`
-  display: flex;
-  justify-content: space-between;
-  min-width: 80%;
-`
-export const CancelDark = styled.button`
-  border: none;
-  outline: none;
-  width: 90px;
-  height: 38px;
-  margin-right: 10px;
-  border: 1px solid #94a3b8;
-  background: transparent;
-  color: #94a3b8;
-  font-family: 'Roboto';
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 8px;
-`
-export const Cancel = styled.button`
-  outline: none;
-  width: 90px;
-  height: 38px;
-  margin-right: 10px;
-  border: 2px solid #94a3b8;
-  background: transparent;
-  color: #94a3b8;
-  font-family: 'Roboto';
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 8px;
-`
-export const Confirm = styled.button`
-  border: none;
-  outline: none;
-  width: 90px;
-  height: 38px;
-  margin-right: 10px;
-  background: #3b82f6;
-  color: #ffffff;
-  font-family: 'Roboto';
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-`
-/** MenuSmModalContainer */
-export const MenuSmModalContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  width: 95vw;
-  background: ${props => (props.isDark ? '#181818' : '#ffffff')};
-`
-export const CloseButton = styled.button`
-  align-self: flex-end;
-  background-color: transparent;
-  width: 30px;
-  height: 30px;
-  border: none;
-  margin-top: 32px;
-  margin-right: 20px;
-  outline: none;
-  cursor: pointer;
-`
-export const NavsContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 60vh;
-`
-export const NavItems = styled.ul`
-  min-width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-left: 0;
-  margin-top: 80px;
-`
-
-export const NavItem = styled.li`
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: 35px;
-  cursor: pointer;
-  min-width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-top: 10px;
-  padding-left: 50px;
-  margin-bottom: 5px;
-  background-color: ${props => props.activeNav && '#d7dfe9'};
-  @media (min-width: 400px) {
-    padding-left: 160px;
+  padding-bottom: 10px;
+  background-color: ${props => (props.isDark ? '#181818' : '#ffffff')};
+  @media screen and (max-width: 576px) {
+    padding-left: 0px;
   }
 `
-export const LinkGenerate = styled(Link)`
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  margin-bottom: 10px;
-  min-width: 100%;
-  cursor: pointer;
+
+export const Logo = styled.img`
+  height: 50px;
+  width: 200px;
 `
 
-export const Nav = styled.p`
-  color: #64748b;
-  font-size: 16px;
-  font-family: 'Roboto';
-  font-weight: bold;
-  margin-left: 17px;
+export const ButtonContainer = styled.div`
+  width: 10%;
+  min-width: 200px;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  align-items: center;
+  @media screen and (max-width: 576px) {
+    min-width: 150px;
+    color: ${props => (props.isDark ? '#ffffff' : '#181818')};
+  }
+`
+
+export const Image = styled.img`
+  height: 30px;
+  width: 30px;
+  @media screen and (max-width: 576px) {
+    display: none;
+  }
+`
+
+export const ThemeButton = styled.button`
+  border-style: none;
+  background-color: transparent;
+  padding: 0px;
+`
+
+export const LogoutButton = styled.button`
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #3b82f6;
+  background-color: transparent;
+  color: #3b82f6;
+  padding: 5px;
+  width: 96px;
+  @media screen and (max-width: 576px) {
+    display: none;
+  }
+`
+
+export const PopupButton = styled.button`
+  border-style: solid;
+  border-radius: 5px;
+  border-color: ${props => (props.cancel ? '#0f0f0f' : ' #3b82f6')};
+  background-color: ${props => (props.cancel ? '#f9f9f9' : '#3b82f6')};
+  color: ${props => (props.cancel ? '#0f0f0f' : '#f9f9f9')};
+  padding: 5px;
+  margin: 10px;
+  width: 96px;
+`
+export const PopupContainer = styled.div`
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: ${props => (props.isDark ? '#181818' : '#f9f9f9')};
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: ${props => (props.isDark ? '#f9f9f9' : '#f9f9f9')};
+`
+export const PopupButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0px;
+`
+
+export const Heading = styled.p`
+  color: 'red';
+`
+export const HamButton = styled.button`
+  border-style: none;
+  background-color: transparent;
+  padding: 0px;
+  color: ${props => (props.isDark ? '#f9f9f9' : '#0f0f0f')};
+  font-size: 30px;
+  display: none;
+  @media screen and (max-width: 576px) {
+    display: flex;
+  }
 `

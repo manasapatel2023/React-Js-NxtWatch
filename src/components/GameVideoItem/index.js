@@ -1,56 +1,45 @@
-import VideoContext from '../../context/VideoContext'
-
+import {Link} from 'react-router-dom'
+import ThemeContext from '../../context/ThemeContext'
 import {
-  GameItem,
-  LinkGenerate,
-  ThumbnailContainer,
-  ThumbnailImage,
-  TextContainer,
-  Title,
-  ViewsText,
-  TitleDark,
-  ViewsTextDark,
+  ListItem,
+  VideoImage,
+  CardContainer,
+  Card,
+  Heading,
+  DetialsContainer,
+  Detail,
 } from './styledComponents'
+import './index.css'
 
 const GameVideoItem = props => {
-  const {game} = props
-  const {id, thumbnailUrl, viewCount, title} = game
-
-  const GameItemDark = () => (
-    <LinkGenerate to={`/videos/${id}`}>
-      <GameItem>
-        <ThumbnailContainer>
-          <ThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
-        </ThumbnailContainer>
-        <TextContainer>
-          <TitleDark>{title}</TitleDark>
-          <ViewsTextDark>{viewCount} Watching Worldwide</ViewsTextDark>
-        </TextContainer>
-      </GameItem>
-    </LinkGenerate>
-  )
-
-  const GameItemLight = () => (
-    <LinkGenerate to={`/videos/${id}`}>
-      <GameItem>
-        <ThumbnailContainer>
-          <ThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
-        </ThumbnailContainer>
-        <TextContainer>
-          <Title>{title}</Title>
-          <ViewsText>{viewCount} Watching Worldwide</ViewsText>
-        </TextContainer>
-      </GameItem>
-    </LinkGenerate>
-  )
-
+  const {itemDetails} = props
+  const {id, thumbnailUrl, title, viewCount} = itemDetails
   return (
-    <VideoContext.Consumer>
+    <ThemeContext.Consumer>
       {value => {
         const {isDark} = value
-        return isDark ? GameItemDark() : GameItemLight()
+
+        return (
+          <>
+            <ListItem>
+              <Link to={`/videos/${id}`} className="link-item">
+                <VideoImage src={thumbnailUrl} alt="video thumbnail" />
+                <CardContainer>
+                  <Card>
+                    <Heading isDark={isDark}>{title}</Heading>
+                    <DetialsContainer>
+                      <Detail>{viewCount}</Detail>
+                      <Detail>Watching Worldwide</Detail>
+                    </DetialsContainer>
+                  </Card>
+                </CardContainer>
+              </Link>
+            </ListItem>
+          </>
+        )
       }}
-    </VideoContext.Consumer>
+    </ThemeContext.Consumer>
   )
 }
+
 export default GameVideoItem

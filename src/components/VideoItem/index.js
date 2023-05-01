@@ -1,103 +1,53 @@
-import {BsDot} from 'react-icons/bs'
-
+import {Link} from 'react-router-dom'
 import {formatDistanceToNow} from 'date-fns'
-
-import VideoContext from '../../context/VideoContext'
+import ThemeContext from '../../context/ThemeContext'
 import {
-  Item,
-  LinkGenerate,
-  ThumbnailImageContainer,
-  Thumbnail,
-  ItemTextContainer,
-  ProfileImage,
-  DescriptionContainer,
-  Title,
-  ChannelDescriptionContainer,
+  ListItem,
+  VideoImage,
+  CardContainer,
+  Profile,
+  Card,
+  Heading,
   Name,
-  ViewsCountAndDate,
-  ViewsCount,
-  PublishedAt,
-  NameDark,
-  ViewsCountDark,
-  PublishedAtDark,
-  TitleDark,
+  DetialsContainer,
+  Detail,
 } from './styledComponents'
+import './index.css'
 
 const VideoItem = props => {
-  const {video} = props
-  const {
-    id,
-    thumbnailUrl,
-    profileImageUrl,
-    title,
-    name,
-    viewCount,
-    publishedAt,
-  } = video
-  const videoItemDark = () => (
-    <LinkGenerate to={`/videos/${id}`}>
-      <Item>
-        <ThumbnailImageContainer>
-          <Thumbnail src={thumbnailUrl} alt="video thumbnail" />
-        </ThumbnailImageContainer>
-        <ItemTextContainer>
-          <ProfileImage src={profileImageUrl} alt="channel logo" />
-          <DescriptionContainer>
-            <TitleDark>{title}</TitleDark>
-            <ChannelDescriptionContainer>
-              <NameDark>{name}</NameDark>
-              <ViewsCountAndDate>
-                <ViewsCountDark>
-                  <BsDot className="hide-dot" size="18" color="#64748b" />
-                  {viewCount} views
-                </ViewsCountDark>
-                <PublishedAtDark>
-                  <BsDot size="18" color="#64748b" />
-                  {formatDistanceToNow(new Date(publishedAt))}
-                </PublishedAtDark>
-              </ViewsCountAndDate>
-            </ChannelDescriptionContainer>
-          </DescriptionContainer>
-        </ItemTextContainer>
-      </Item>
-    </LinkGenerate>
-  )
-  const videoItemLight = () => (
-    <LinkGenerate to={`/videos/${id}`}>
-      <Item>
-        <ThumbnailImageContainer>
-          <Thumbnail src={thumbnailUrl} alt="video thumbnail" />
-        </ThumbnailImageContainer>
-        <ItemTextContainer>
-          <ProfileImage src={profileImageUrl} alt="channel logo" />
-          <DescriptionContainer>
-            <Title>{title}</Title>
-            <ChannelDescriptionContainer>
-              <Name>{name}</Name>
-              <ViewsCountAndDate>
-                <ViewsCount>
-                  <BsDot className="hide-dot" size="18" color="#1e293b" />
-                  {viewCount} views
-                </ViewsCount>
-                <PublishedAt>
-                  <BsDot size="18" color="#1e293b" />
-                  {formatDistanceToNow(new Date(publishedAt))}
-                </PublishedAt>
-              </ViewsCountAndDate>
-            </ChannelDescriptionContainer>
-          </DescriptionContainer>
-        </ItemTextContainer>
-      </Item>
-    </LinkGenerate>
-  )
-
+  const {itemDetails} = props
+  const {id, channel, publishedAt, thumbnailUrl, title, viewCount} = itemDetails
+  const {name, profileImageUrl} = channel
   return (
-    <VideoContext.Consumer>
+    <ThemeContext.Consumer>
       {value => {
         const {isDark} = value
-        return isDark ? videoItemDark() : videoItemLight()
+
+        return (
+          <>
+            <ListItem>
+              <Link to={`/videos/${id}`} className="link-item">
+                <VideoImage src={thumbnailUrl} alt="video thumbnail" />
+                <CardContainer>
+                  <Profile src={profileImageUrl} alt="channel logo" />
+                  <Card>
+                    <Heading isDark={isDark}>{title}</Heading>
+                    <Name>{name}</Name>
+                    <DetialsContainer>
+                      <Detail>{viewCount} Views</Detail>
+                      <Detail>
+                        {formatDistanceToNow(new Date(publishedAt))}
+                      </Detail>
+                    </DetialsContainer>
+                  </Card>
+                </CardContainer>
+              </Link>
+            </ListItem>
+          </>
+        )
       }}
-    </VideoContext.Consumer>
+    </ThemeContext.Consumer>
   )
 }
+
 export default VideoItem

@@ -1,299 +1,125 @@
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 
-import {Link} from 'react-router-dom'
-
-export const SavedVideosRouteContainer = styled.div`
-  background-color: ${props => (props.dark ? '#0f0f0f' : '#f9f9f9')};
-  min-height: 100vh;
-`
-
-export const SavedContainer = styled.div`
-  min-height: 90vh;
+export const BodyContainer = styled.div`
   display: flex;
-  flex-direction: row;
-`
-/** SIDEBAR DESIGN  */
-
-export const SideBarContainer = styled.div`
-  display: none;
-  background-color: #fffffff;
-  @media (min-width: 768px) {
-    height: 90vh;
-    width: 25vw;
-    max-width: 240px;
-    padding-top: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-`
-export const NavLinksContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-export const LinkGenerate = styled(Link)`
-  text-decoration: none;
-`
-export const LinkContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 35px;
-  padding-left: 15px;
-  cursor: pointer;
-`
-export const LinkContainerSaved = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 35px;
-  padding-left: 15px;
-  cursor: pointer;
-  background: #cbd5e1;
 `
 
-export const Nav = styled.p`
-  color: #64748b;
-  font-size: 16px;
-  font-family: 'Roboto';
-  font-weight: bold;
-  margin-left: 23px;
-`
-export const NavSaved = styled.p`
-  color: #0f0f0f;
-  font-size: 16px;
-  font-family: 'Roboto';
-  font-weight: bold;
-  margin-left: 23px;
-`
-
-export const ContactUsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-`
-export const ContactUs = styled.p`
-  color: #475569;
-  font-size: 17px;
-  font-family: 'Roboto';
-  font-weight: bold;
-  line-height: 1.3;
-`
-export const LogosContainer = styled.div`
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-`
-export const Logo = styled.img`
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-`
-export const ContactUsTagLine = styled.p`
-  color: #616e7c;
-  font-size: 15px;
-  font-family: 'Roboto';
-  font-weight: bold;
-  line-height: 1.3;
-`
-
-/** SideBarContainerDark */
-export const SideBarContainerDark = styled.div`
-  display: none;
-  background-color: #181818;
-  @media (min-width: 768px) {
-    height: 90vh;
-    width: 25vw;
-    max-width: 240px;
-    padding-top: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-`
-export const LinkContainerSavedDark = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 35px;
-  padding-left: 15px;
-  cursor: pointer;
-  background: #383838;
-`
-export const NavSavedDark = styled.p`
-  color: #ffffff;
-  font-size: 16px;
-  font-family: 'Roboto';
-  font-weight: bold;
-  margin-left: 23px;
-`
-export const NavDark = styled.p`
-  color: #ebebeb;
-  font-size: 15px;
-  font-family: 'Roboto';
-  font-weight: 400;
-  margin-left: 23px;
-`
-
-export const ContactUsDark = styled.p`
-  color: #f9f9f9;
-  font-size: 17px;
-  font-family: 'Roboto';
-  font-weight: bold;
-  line-height: 1.3;
-`
-export const ContactUsTagLineDark = styled.p`
-  color: #f9f9f9;
-  font-size: 15px;
-  font-family: 'Roboto';
-  font-weight: bold;
-  line-height: 1.3;
-`
-/** Saved Bar */
-
-export const SavedBarContainer = styled.div`
+export const ResponsiveContainer = styled.div`
+  width: 85%;
+  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f1f1f1')};
+  overflow: auto;
   height: 90vh;
-  width: 100vw;
-  background-color: #f9f9f9;
-  @media (min-width: 768px) {
-    width: 75vw;
-  }
-  @media (min-width: 968px) {
+  @media screen and (max-width: 576px) {
     width: 100%;
   }
 `
-export const SavedLogoAndNameContainer = styled.div`
-  height: 90px;
-  background-color: #f1f1f1;
-  display: flex;
-  align-items: center;
-  padding-left: 39px;
-  padding-right: 39px;
-  @media (max-width: 768px) {
-    height: 75px;
-    padding-left: 11px;
-    padding-right: 11px;
-  }
+
+export const BannerHeading = styled.h1`
+  font-size: 25px;
 `
-export const SavedLogoContainer = styled.div`
-  background-color: #cbd5e1;
-  width: 70px;
-  height: 70px;
-  border-radius: 40px;
+export const BannerContainer = styled.div`
+  background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
+  background-size: cover;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  width: 90%;
+  margin: 10px;
+`
+
+export const CloseButton = styled.button`
+  align-self: end;
+  background-color: transparent;
+  border-style: none;
+`
+
+export const BannerLogo = styled.img`
+  width: 200px;
+  height: 50px;
+`
+
+export const BannerButton = styled.button`
+  font-size: 15px;
+`
+
+export const InputBox = styled.input`
+  font-size: 25px;
+  margin-left: 10px;
+  margin-top: 10px;
+`
+
+export const Button = styled.button`
+  font-size: 25px;
+`
+export const LoaderContainer = styled.div`
+  display: flex;
   justify-content: center;
-  text-align: center;
-  @media (max-width: 768px) {
-    height: 50px;
-    width: 50px;
-    border-radius: 150px;
-  }
+  align-content: center;
+  height: 30vh;
 `
-export const SavedVidName = styled.h1`
-  color: #0f0f0f;
-  font-size: 25px;
-  font-family: 'Roboto';
-  font-weight: bold;
-  line-height: 1.3;
-  margin-left: 15px;
-  @media (max-width: 768px) {
-    font-size: 19px;
-  }
-`
-
-/** saved Bar Dark */
-
-export const SavedBarContainerDark = styled.div`
-  min-height: 90vh;
-  width: 100vw;
-  background-color: #0f0f0f;
-  @media (min-width: 768px) {
-    width: 75vw;
-  }
-  @media (min-width: 968px) {
-    width: 100%;
-  }
-`
-export const SavedLogoAndNameContainerDark = styled.div`
-  height: 90px;
-  background-color: #212121;
+export const VideosListContainer = styled.ul`
   display: flex;
-  align-items: center;
-  padding-left: 39px;
-  padding-right: 39px;
-  @media (max-width: 768px) {
-    height: 75px;
-    padding-left: 11px;
-    padding-right: 11px;
-  }
+  flex-wrap: wrap;
 `
-export const SavedVidNameDark = styled.h1`
-  color: #ffffff;
-  font-size: 25px;
-  font-family: 'Roboto';
-  font-weight: bold;
-  line-height: 1.3;
-  margin-left: 15px;
-  @media (max-width: 768px) {
-    font-size: 19px;
-  }
+
+export const SavedVideosContentContainer = styled.div`
+  min-height: 100px;
+  width: 88%;
+  padding: 25px;
+  margin-top: 50px;
 `
-export const SavedVideosContainer = styled.ul`
+
+export const VideosContainer = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 80vh;
+  margin-top: 0px;
   list-style-type: none;
   padding-left: 0px;
-  padding-left: 39px;
-  padding-right: 39px;
-  @media (max-width: 768px) {
-    padding: 11px;
-  }
+  width: 100%;
 `
-/** No Saved Videos View */
-
-export const NoSavedContainer = styled.div`
+export const NoSavedVideosContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+`
+
+export const NoSavedVideos = styled.img`
+  width: 50%;
+`
+export const NoSavesVideosText = styled.h1`
+  color: ${props => (!props.isDark ? '#0f0f0f' : '#f9f9f9')};
+`
+
+export const NoSavedVideosSuggestion = styled.p`
+  color: ${props => (!props.isDark ? '#0f0f0f' : '#f9f9f9')};
+`
+export const IconContainer = styled.div`
+  display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
-  width: 100vw;
-  background-color: ${props => (props.dark ? '#0f0f0f' : '#ffffff')};
-  @media (min-width: 768px) {
-    width: 75vw;
-  }
-  @media (min-width: 968px) {
-    width: 100%;
-  }
+  height: 80px;
+  width: 80px;
+  border-radius: 80px;
+  background-color: ${props => (props.darkMode ? '#0f0f0f' : '#f9f9f9')};
+  margin: 25px;
 `
-export const NoSavedImage = styled.img`
-  width: 400px;
-  height: 400px;
-  @media (max-width: 768px) {
-    width: 220px;
-    height: 220px;
-  }
+
+export const LinkItem = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 30px;
+  margin-right: 10px;
+
+  font-size: 25px;
+  background-color: ${props => (props.isDark ? '#181818' : '#ffffff')};
+  color: ${props => (!props.isDark ? 'black' : '#ffffff')};
+  height: 90px;
+  padding: 20px;
 `
-export const NoSavedName = styled.h1`
-  color: ${props => (props.dark ? '#ffffff' : '#181818')};
-  font-family: 'Roboto';
-  font-weight: bold;
-  font-size: 20px;
-  text-align: center;
-  margin-bottom: 0;
-  @media (max-width: 768px) {
-    font-size: 16px;
-  }
-`
-export const NoSavedDescription = styled.p`
-  color: ${props => (props.dark ? '#606060' : '#475569')};
-  font-family: 'Roboto';
-  font-weight: 400;
-  font-size: 18px;
-  text-align: center;
-  width: 450px;
-  margin-bottom: 0;
-  @media (max-width: 768px) {
-    width: 100%;
-    font-size: 14px;
-  }
+export const Heading = styled.h1`
+  color: ${props => (!props.isDark ? '#0f0f0f' : '#f9f9f9')};
+  font-size: 40px;
 `

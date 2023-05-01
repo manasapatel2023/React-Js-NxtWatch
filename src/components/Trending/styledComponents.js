@@ -1,327 +1,131 @@
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 
-import {Link} from 'react-router-dom'
-
-export const TrendingRouteContainer = styled.div`
-  background-color: ${props => (props.dark ? '#0f0f0f' : '#f9f9f9')};
-  min-height: 100vh;
-`
-
-export const TrendingContainer = styled.div`
-  min-height: 90vh;
+export const BodyContainer = styled.div`
   display: flex;
-  flex-direction: row;
-`
-/** SIDEBAR DESIGN  */
-
-export const SideBarContainer = styled.div`
-  display: none;
-  background-color: #ffffff;
-  @media (min-width: 768px) {
-    height: 90vh;
-    width: 25vw;
-    max-width: 240px;
-    padding-top: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-`
-export const NavLinksContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-export const LinkGenerate = styled(Link)`
-  text-decoration: none;
-`
-export const LinkContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 35px;
-  padding-left: 15px;
-  cursor: pointer;
-`
-export const LinkContainerTrend = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 35px;
-  padding-left: 15px;
-  cursor: pointer;
-  background: #cbd5e1;
 `
 
-export const Nav = styled.p`
-  color: #64748b;
-  font-size: 16px;
-  font-family: 'Roboto';
-  font-weight: bold;
-  margin-left: 23px;
-`
-export const NavTrend = styled.p`
-  color: #0f0f0f;
-  font-size: 16px;
-  font-family: 'Roboto';
-  font-weight: bold;
-  margin-left: 23px;
-`
-
-export const ContactUsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-`
-export const ContactUs = styled.p`
-  color: #475569;
-  font-size: 17px;
-  font-family: 'Roboto';
-  font-weight: bold;
-  line-height: 1.3;
-`
-export const LogosContainer = styled.div`
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-`
-export const Logo = styled.img`
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-`
-export const ContactUsTagLine = styled.p`
-  color: #616e7c;
-  font-size: 15px;
-  font-family: 'Roboto';
-  font-weight: bold;
-  line-height: 1.3;
-`
-/** Trending Bar */
-
-export const TrendingBarContainer = styled.div`
+export const ResponsiveContainer = styled.div`
+  width: 85%;
+  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f1f1f1')};
+  overflow: auto;
   height: 90vh;
-  width: 100vw;
-  background-color: #f9f9f9;
-  @media (min-width: 768px) {
-    width: 75vw;
-  }
-  @media (min-width: 968px) {
+  @media screen and (max-width: 576px) {
     width: 100%;
   }
 `
-export const TrendingLogoAndNameContainer = styled.div`
-  height: 90px;
-  background-color: #f1f1f1;
-  display: flex;
-  align-items: center;
-  padding-left: 39px;
-  padding-right: 39px;
-  @media (max-width: 768px) {
-    height: 75px;
-    padding-left: 11px;
-    padding-right: 11px;
-  }
-`
-export const TrendingLogoContainer = styled.div`
-  background-color: #cbd5e1;
-  width: 70px;
-  height: 70px;
-  border-radius: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  @media (max-width: 768px) {
-    height: 50px;
-    width: 50px;
-    border-radius: 150px;
-  }
-`
-export const TrendingName = styled.h1`
-  color: #0f0f0f;
+
+export const BannerHeading = styled.h1`
   font-size: 25px;
-  font-family: 'Roboto';
-  font-weight: bold;
-  line-height: 1.3;
-  margin-left: 15px;
-  @media (max-width: 768px) {
-    font-size: 19px;
-  }
 `
-export const TrendingVideosContainer = styled.ul`
-  list-style-type: none;
-  padding-left: 0px;
-  padding-left: 39px;
-  padding-right: 39px;
-  @media (max-width: 768px) {
-    padding: 11px;
-  }
-`
-/** SideBarContainerDark */
-export const SideBarContainerDark = styled.div`
-  display: none;
-  background-color: #181818;
-  @media (min-width: 768px) {
-    height: 90vh;
-    width: 25vw;
-    max-width: 240px;
-    padding-top: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-`
-export const LinkContainerTrendDark = styled.div`
+export const BannerContainer = styled.div`
+  background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
+  background-size: cover;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 35px;
-  padding-left: 15px;
-  cursor: pointer;
-  background: #383838;
-`
-export const NavTrendDark = styled.p`
-  color: #ffffff;
-  font-size: 16px;
-  font-family: 'Roboto';
-  font-weight: bold;
-  margin-left: 23px;
-`
-export const NavDark = styled.p`
-  color: #ebebeb;
-  font-size: 15px;
-  font-family: 'Roboto';
-  font-weight: 400;
-  margin-left: 23px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  width: 90%;
+  margin: 10px;
 `
 
-export const ContactUsDark = styled.p`
-  color: #f9f9f9;
-  font-size: 17px;
-  font-family: 'Roboto';
-  font-weight: bold;
-  line-height: 1.3;
+export const CloseButton = styled.button`
+  align-self: end;
+  background-color: transparent;
+  border-style: none;
 `
-export const ContactUsTagLineDark = styled.p`
-  color: #f9f9f9;
-  font-size: 15px;
-  font-family: 'Roboto';
-  font-weight: bold;
-  line-height: 1.3;
-`
-/** Trending bar dark */
-export const TrendingBarContainerDark = styled.div`
-  min-height: 90vh;
-  width: 100vw;
-  background-color: #0f0f0f;
-  @media (min-width: 768px) {
-    width: 75vw;
-  }
-  @media (min-width: 968px) {
-    width: 100%;
-  }
-`
-export const TrendingLogoAndNameContainerDark = styled.div`
-  height: 90px;
-  background-color: #212121;
-  display: flex;
-  align-items: center;
-  padding-left: 39px;
-  padding-right: 39px;
-  @media (max-width: 768px) {
-    height: 75px;
-    padding-left: 11px;
-    padding-right: 11px;
-  }
-`
-export const TrendingNameDark = styled.h1`
-  color: #ffffff;
-  font-size: 25px;
-  font-family: 'Roboto';
-  font-weight: bold;
-  line-height: 1.3;
-  margin-left: 15px;
-  @media (max-width: 768px) {
-    font-size: 19px;
-  }
-`
-/** Loader */
 
+export const BannerLogo = styled.img`
+  width: 200px;
+  height: 50px;
+`
+
+export const BannerButton = styled.button`
+  font-size: 15px;
+`
+
+export const InputBox = styled.input`
+  font-size: 25px;
+  margin-left: 10px;
+  margin-top: 10px;
+`
+
+export const Button = styled.button`
+  font-size: 25px;
+`
 export const LoaderContainer = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  min-height: 90vh;
-  width: 100vw;
-  background-color: ${props => (props.dark ? '#0f0f0f' : '#ffffff')};
-  @media (min-width: 768px) {
-    width: 75vw;
-  }
-  @media (min-width: 968px) {
-    width: 100%;
+  align-content: center;
+  height: 30vh;
+`
+export const VideosListContainer = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  @media screen and (max-width: 576px) {
+    margin: 0px;
+    padding-left: 0px;
   }
 `
-/** Failure  */
+export const SavedVideosContentContainer = styled.div`
+  min-height: 100px;
+  width: 88%;
+  padding: 25px;
+  margin-top: 50px;
+`
 
-export const FailureContainer = styled.div`
+export const VideosContainer = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 80vh;
+  margin-top: 0px;
+  list-style-type: none;
+  padding-left: 0px;
+  width: 100%;
+`
+export const NoSavedVideosContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+`
+
+export const NoSavedVideos = styled.img`
+  width: 50%;
+`
+export const NoSavesVideosText = styled.h1`
+  color: ${props => (!props.isDark ? '#0f0f0f' : '#f9f9f9')};
+`
+
+export const NoSavedVideosSuggestion = styled.p`
+  color: ${props => (!props.isDark ? '#0f0f0f' : '#f9f9f9')};
+`
+export const IconContainer = styled.div`
+  display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
-  width: 100vw;
-  background-color: ${props => (props.dark ? '#0f0f0f' : '#ffffff')};
-  @media (min-width: 768px) {
-    width: 75vw;
-  }
-  @media (min-width: 968px) {
-    width: 100%;
+  height: 80px;
+  width: 80px;
+  border-radius: 80px;
+  background-color: ${props => (props.darkMode ? '#0f0f0f' : '#f9f9f9')};
+  margin: 25px;
+`
+
+export const LinkItem = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 30px;
+  margin-right: 10px;
+  font-size: 25px;
+  background-color: ${props => (props.isDark ? '#181818' : '#ffffff')};
+  color: ${props => (!props.isDark ? 'black' : '#ffffff')};
+  height: 90px;
+  padding: 20px;
+  @media screen and (max-width: 576px) {
+    padding-left: 0px;
+    margin: 10px 0px 10px 0px;
   }
 `
-export const FailureImage = styled.img`
-  width: 350px;
-  height: 400px;
-  @media (max-width: 768px) {
-    width: 220px;
-    height: 220px;
-  }
-`
-export const FailureName = styled.h1`
-  color: ${props => (props.dark ? '#ffffff' : '#181818')};
-  font-family: 'Roboto';
-  font-weight: bold;
-  font-size: 20px;
-  text-align: center;
-  margin-bottom: 0;
-  @media (max-width: 768px) {
-    font-size: 16px;
-  }
-`
-export const FailureDescription = styled.p`
-  color: ${props => (props.dark ? '#606060' : '#475569')};
-  font-family: 'Roboto';
-  font-weight: 400;
-  font-size: 18px;
-  text-align: center;
-  width: 450px;
-  margin-bottom: 0;
-  @media (max-width: 768px) {
-    width: 100%;
-    font-size: 14px;
-  }
-`
-export const RetryBtn = styled.button`
-  width: 100px;
-  height: 38px;
-  color: #ffffff;
-  font-family: 'Roboto';
-  font-weight: 500;
-  font-size: 14px;
-  outline: none;
-  border: none;
-  border-radius: 5px;
-  background: #4f46e5;
-  margin-top: 13px;
-  cursor: pointer;
+export const Heading = styled.h1`
+  color: ${props => (!props.isDark ? '#0f0f0f' : '#f9f9f9')};
+  font-size: 40px;
 `

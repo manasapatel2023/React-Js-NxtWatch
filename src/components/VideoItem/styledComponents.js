@@ -1,155 +1,62 @@
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 
-import {Link} from 'react-router-dom'
-
-export const LinkGenerate = styled(Link)`
-  text-decoration: none;
-`
-
-export const Item = styled.li`
-  width: 300px;
-  margin-right: 12px;
-  margin-bottom: 12px;
-  border-radius: 2px;
-  flex-grow: 1;
-  @media (max-width: 664px) {
-    width: 100%;
-  }
-`
-
-export const ThumbnailImageContainer = styled.div`
-  @media (max-width: 768px) {
-    margin-bottom: 5px;
-  }
-`
-
-export const Thumbnail = styled.img`
-  width: 100%;
-  height: 190px;
-  @media (max-width: 664px) and (min-width: 564px) {
-    height: 330px;
-  }
-`
-export const ItemTextContainer = styled.div`
+export const ListItem = styled.li`
+  margin: 5px;
+  margin-bottom: 10px;
+  width: 24%;
+  min-width: 250px;
+  font-family: Roboto;
+  color: ${props => (props.isDark ? '#f1f1f1' : '#64748b')};
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  @media screen and (max-width: 576px) {
+    width: 100vw;
+    min-width: 300px;
+  }
 `
-export const ProfileImage = styled.img`
-  width: 30px;
-  height: 30px;
-  align-self: flex-start;
-  margin-top: 12px;
+
+export const VideoImage = styled.img`
+  width: 100%;
+`
+export const CardContainer = styled.div`
+  display: flex;
+  align-items: center;
+  text-align: left;
+  align-self: start;
+  @media screen and (max-width: 576px) {
+    justify-content: flex-start;
+    padding-left: 5px;
+    margin-left: 0px;
+    width: 100p%;
+  }
+`
+
+export const Profile = styled.img`
+  height: 50px;
+  width: 50px;
   margin-right: 10px;
 `
-export const DescriptionContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-export const Title = styled.p`
-  color: #1e293b;
-  font-size: 15px;
-  font-family: 'Roboto';
+export const Card = styled.div``
+export const Heading = styled.p`
+  font-size: 18px;
   font-weight: 400;
-  margin-bottom: 0px;
-  line-height: 1.4;
-  @media (max-width: 768px) {
-    font-size: 16px;
-  }
-`
-export const ChannelDescriptionContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  @media (max-width: 768px) {
-    flex-direction: row;
-  }
+  color: ${props => (props.isDark ? '#64748b' : '#1e293b')};
+  align-self: start;
 `
 export const Name = styled.p`
-  color: #909090;
-  font-size: 15px;
-  font-family: 'Roboto';
-  font-weight: 500;
-  margin-bottom: 0px;
-  @media (max-width: 768px) {
-    font-size: 12px;
-    margin-right: 13px;
-  }
-`
-export const ViewsCountAndDate = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-export const ViewsCount = styled.p`
-  color: #909090;
-  font-size: 13px;
-  font-family: 'Roboto';
-  font-weight: 500;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  @media (max-width: 768px) {
-    font-size: 12px;
-  }
-`
-export const PublishedAt = styled.p`
-  color: #909090;
-  font-size: 13px;
-  font-family: 'Roboto';
-  font-weight: 500;
-  margin-left: 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  @media (max-width: 768px) {
-    font-size: 12px;
-  }
+  font-size: 18px;
+  font-weight: 400;
+  color: ${props => (props.isDark ? '#64748b' : '#64748b')};
 `
 
-/** Dark Page */
-export const TitleDark = styled.p`
-  color: #f1f1f1;
+export const DetialsContainer = styled.div`
+  display: flex;
+  margin-top: 5px;
+  padding: 0px;
+`
+export const Detail = styled.p`
   font-size: 15px;
-  font-family: 'Roboto';
   font-weight: 400;
-  margin-bottom: 0px;
-  line-height: 1.4;
-  @media (max-width: 768px) {
-    font-size: 16px;
-  }
-`
-export const NameDark = styled.p`
-  color: #64748b;
-  font-size: 15px;
-  font-family: 'Roboto';
-  font-weight: 500;
-  margin-bottom: 0px;
-  @media (max-width: 768px) {
-    font-size: 12px;
-    margin-right: 13px;
-  }
-`
-export const ViewsCountDark = styled.p`
-  color: #64748b;
-  font-size: 13px;
-  font-family: 'Roboto';
-  font-weight: 500;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  @media (max-width: 768px) {
-    font-size: 12px;
-  }
-`
-export const PublishedAtDark = styled.p`
-  color: #64748b;
-  font-size: 13px;
-  font-family: 'Roboto';
-  font-weight: 500;
-  margin-left: 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  @media (max-width: 768px) {
-    font-size: 12px;
-  }
+  color: ${props => (props.isDark ? '#64748b' : '#64748b')};
+  margin-right: 10px;
 `
